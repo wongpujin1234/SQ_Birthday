@@ -8,11 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 
     <style>
         
         /* --- ANIMATIONS (KEYFRAMES) --- */
-
         @keyframes video-fade-in {
             from { opacity: 0; transform: scale(0.5); }
             to   { opacity: 1; transform: scale(1); }
@@ -45,7 +47,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #d8bfff 0%, #ff69b4 100%);
+            background: black; /* Background is black */
             text-align: center;
             color: #333;
             overflow: hidden; 
@@ -56,13 +58,20 @@
             position: relative;
             z-index: 10;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            /* Important for photos to be relative to this container */
+            width: 100%; 
+            height: 100%;
+            display: flex; /* To center the text within it */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* --- "HAPPY BIRTHDAY" STYLING --- */
         h1.decorative-text {
-            font-family: 'Pacifico', cursive;
-            font-size: 4em;
-            color: #d6336c;
+            font-family: 'Dancing Script', cursive; 
+            font-size: 4.5em; 
+            color: #FFD700; 
             margin: 0;
             text-shadow: 4px 4px 8px rgba(255, 255, 255, 0.4);
             display: flex;
@@ -73,9 +82,14 @@
         h1.decorative-text span {
             position: relative;
             opacity: 0;
-            animation: video-fade-in 0.6s forwards;
+            animation:
+            rgb-wave 3s infinite linear,
+            video-fade-in 0.6s forwards;
+            animation-timing-function:
+            steps(1),
+            ease;
         }
-        
+                    
         /* Staggered delay for "Happy Birthday," (16 letters) */
         h1.decorative-text span:nth-child(1) { animation-delay: 0.1s; }
         h1.decorative-text span:nth-child(2) { animation-delay: 0.2s; }
@@ -94,121 +108,107 @@
         h1.decorative-text span:nth-child(15) { animation-delay: 1.5s; }
         h1.decorative-text span:nth-child(16) { animation-delay: 1.6s; }
 
-
-        /* --- CYBERPUNK NAME STYLING --- */
-        h2.lee-song-qing {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5.5em;
-            letter-spacing: 5px;
-            margin: -10px 0 0 0;
+        /* --- LEE SONG QING STYLING FOR PAGE 1 --- */
+        h2.name-on-page1 {
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 2.5em; 
+            color: #00FFFF; 
+            margin: 10px 0 0 0; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
             display: flex;
             justify-content: center;
-            -webkit-text-stroke: 2px #444;
-            text-stroke: 2px #444;
+            flex-wrap: wrap;
+            animation-delay: 1.8s; 
         }
-
-        h2.lee-song-qing span {
+        h2.name-on-page1 span {
             position: relative;
-            opacity: 0; /* <-- ADDED THIS to make it fade in */
-            animation:
-                rgb-wave 3s infinite linear,    /* Animation 1: Color wave */
-                video-fade-in 0.6s forwards; /* Animation 2: Fade in */
-            animation-timing-function:
-                steps(1), /* Timing for rgb-wave */
-                ease;     /* Timing for video-fade-in */
-        }
-
-        /* NEW Staggered delay for "Lee Song Qing!" (14 letters) */
-        h2.lee-song-qing span:nth-child(1) { animation-delay: 2.0s; }
-        h2.lee-song-qing span:nth-child(2) { animation-delay: 2.1s; }
-        h2.lee-song-qing span:nth-child(3) { animation-delay: 2.2s; }
-        h2.lee-song-qing span:nth-child(4) { animation-delay: 2.3s; }
-        h2.lee-song-qing span:nth-child(5) { animation-delay: 2.4s; }
-        h2.lee-song-qing span:nth-child(6) { animation-delay: 2.5s; }
-        h2.lee-song-qing span:nth-child(7) { animation-delay: 2.6s; }
-        h2.lee-song-qing span:nth-child(8) { animation-delay: 2.7s; }
-        h2.lee-song-qing span:nth-child(9) { animation-delay: 2.8s; }
-        h2.lee-song-qing span:nth-child(10) { animation-delay: 2.9s; }
-        h2.lee-song-qing span:nth-child(11) { animation-delay: 3.0s; }
-        h2.lee-song-qing span:nth-child(12) { animation-delay: 3.1s; }
-        h2.lee-song-qing span:nth-child(13) { animation-delay: 3.2s; }
-        h2.lee-song-qing span:nth-child(14) { animation-delay: 3.3s; }
-
-        
-        /* --- STYLING FOR THE CAKE --- */
-        #birthday-cake {
-            height: 320px; /* Kept the bigger size */
-            width: auto;
-            margin: 10px 0;
             opacity: 0;
-            animation: video-fade-in 1s forwards;
-            /* NEW DELAY: 4.0s, so it appears LAST */
-            animation-delay: 4.0s;
+            animation:
+            rgb-wave 3s infinite linear,
+            video-fade-in 0.6s forwards;
+            animation-timing-function:
+            steps(1),
+            ease;
         }
-
+        
+        /* Staggered delay for "Lee Song Qing!" (14 letters) */
+        /* Starts at 1.8s, AFTER "Happy Birthday" */
+        h2.name-on-page1 span:nth-child(1) { animation-delay: 1.8s; }
+        h2.name-on-page1 span:nth-child(2) { animation-delay: 1.9s; }
+        h2.name-on-page1 span:nth-child(3) { animation-delay: 2.0s; }
+        h2.name-on-page1 span:nth-child(4) { animation-delay: 2.1s; }
+        h2.name-on-page1 span:nth-child(5) { animation-delay: 2.2s; }
+        h2.name-on-page1 span:nth-child(6) { animation-delay: 2.3s; }
+        h2.name-on-page1 span:nth-child(7) { animation-delay: 2.4s; }
+        h2.name-on-page1 span:nth-child(8) { animation-delay: 2.5s; }
+        h2.name-on-page1 span:nth-child(9) { animation-delay: 2.6s; }
+        h2.name-on-page1 span:nth-child(10) { animation-delay: 2.7s; }
+        h2.name-on-page1 span:nth-child(11) { animation-delay: 2.8s; }
+        h2.name-on-page1 span:nth-child(12) { animation-delay: 2.9s; }
+        h2.name-on-page1 span:nth-child(13) { animation-delay: 3.0s; }
+        h2.name-on-page1 span:nth-child(14) { animation-delay: 3.1s; }
 
         /* --- PHOTO STYLING --- */
         .photo-overlay {
-            position: absolute;
+            position: absolute; /* Kept absolute to float around */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             z-index: 5;
-            border: 2px solid black;
+            border: 2px solid white; /* FRAME CHANGED TO WHITE */
+            opacity: 0; 
         }
-        .photo1 {
-            width: 200px;
-            height: 318px;
-            top: 5%;
+        .photo5 {
+            width: 180px;
+            height: 560px; 
+            top: 10%;
             left: 10%;
-            background-image: url('images/p1.jpg'); 
+            background-image: url('images/p5.jpg'); 
             transform: rotate(-15deg);
-            animation: float1 4s infinite alternate ease-in-out;
+            animation: video-fade-in 1s forwards 2.5s, float1 4s infinite alternate ease-in-out 3.5s;
         }
-        .photo2 {
-            width: 300px;
-            height: 184px;
-            bottom: 15%;
-            right: 15%;
-            background-image: url('images/p2.jpg');
+        .photo6 {
+            width: 180px;
+            height: 560px; 
+            bottom: 10%;
+            right: 10%;
+            background-image: url('images/p6.jpg');
             transform: rotate(10deg);
-            animation: float2 5s infinite alternate ease-in-out;
-        }
-        .photo3 {
-            width: 180px; /* New smaller width */
-            height: 288px; /* Calculated height: (1080 / 675) * 180 */
-            top: 10%; /* Position from top */
-            right: 15%; /* Positioned in the top-right corner */
-            background-image: url('images/p3.jpg');
-            transform: rotate(8deg); /* Added a slight tilt */
-            animation: float2 4.5s infinite alternate ease-in-out;
+            animation: video-fade-in 1s forwards 2.8s, float2 5s infinite alternate ease-in-out 3.8s; 
         }
 
-        #birthday-video {
-            position: absolute;
-            z-index: 5;
-            width: 200px;  /* You can change this width */
-            height: 356px; /* Calculated height: (640 / 360) * 200 */
-            bottom: 5%;
-            left: 10%;
-            border-radius: 15px; /* Matches the photo frame */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Matches the photo frame */
-            transform: rotate(-5deg);
-            animation: float1 5s infinite alternate ease-in-out;
-            border: 2px solid black;
+        /* --- NAVIGATION BUTTON --- */
+        .nav-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            padding: 15px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            color: white;
+            background-color: #d6336c;
+            border: 2px solid white; 
+            border-radius: 10px;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s ease-in-out;
+            opacity: 0; 
+            animation: video-fade-in 0.6s forwards; 
+            animation-delay: 3.5s; 
+        }
+        .nav-button:hover {
+            transform: scale(1.05);
+            background-color: #ff69b4;
         }
 
-/* --- ============================ --- */
         /* --- MOBILE RESPONSIVE STYLES --- */
-        /* --- ============================ --- */
-
         @media (max-width: 768px) {
-
-            /* Allow the body to scroll */
             body {
-                display: block; /* Stop centering */
+                display: block; 
                 height: auto;
                 overflow-y: auto;
             }
@@ -216,118 +216,87 @@
             .name-container {
                 padding-top: 50px;
                 padding-bottom: 50px;
+                width: 100%; /* Ensure container takes full width */
+                height: auto; /* Allow container to grow with content */
             }
 
-            /* Make text much smaller */
             h1.decorative-text {
-                font-size: 2.5em; /* Was 4em */
+                font-size: 2.5em; 
             }
-            h2.lee-song-qing {
-                font-size: 2.7em;   /* Was 6.5em */
-                letter-spacing: 1.5px;
-                -webkit-text-stroke: 1px #444;
-                text-stroke: 1px #444;
+            h2.name-on-page1 {
+                font-size: 1.5em; 
+                letter-spacing: 1px;
             }
 
-            /* Make cake smaller */
-            #birthday-cake {
-                height: 200px; /* Was 320px */
-            }
-
-            /* --- 
-            This is the most important part.
-            We are changing all photos/videos from "floating" to "stacked".
-            --- */
-
-            /* Reset all floating elements */
-            .photo-overlay, 
-            #birthday-video {
-                position: relative; /* Puts them in the normal flow */
+            .photo-overlay {
+                position: relative; /* Stack photos in mobile view */
                 width: 80%;
-                margin: 25px auto; /* Center them with space */
-                
-                /* Reset positioning */
+                margin: 25px auto; 
                 top: auto;
                 left: auto;
                 right: auto;
                 bottom: auto;
-
-                /* Reset animations and tilt */
                 transform: none;
                 animation: none;
+                height: auto; /* Let content define height for mobile */
+                padding-top: calc(896 / 288 * 80%); /* Maintain aspect ratio for p5/p6 on mobile */
+                box-sizing: border-box; /* Include padding/border in width/height */
             }
 
-            /* --- Give them new heights to match their aspect ratios --- */
-
-            .photo1 {
-                width: 70%;
-                height: 388px; /* Aspect ratio for p1 */
-            }
-            .photo2 {
-                width: 90%;
-                height: 220px; /* Aspect ratio for p2 */
-            }
-            .photo3 {
-                width: 70%;
-                height: 358px; /* Aspect ratio for p3 */
-            }
-            #birthday-video {
-                width: 70%;
-                height: 391px; /* Aspect ratio for p4 */
+            .nav-button {
+                position: relative; /* Position relative in mobile flow */
+                margin: 30px auto;
+                display: block; /* Make it a block element to center with margin:auto */
+                width: fit-content; /* Only take content width */
+                right: auto;
             }
         }
 
     </style>
 </head>
-        <body>
-        <div class="name-container"> <h1 class="decorative-text" id="hbd-target"></h1>
-        <h2 class="lee-song-qing" id="name-target"></h2>
-        <img src="images/cake.png" alt="Birthday Cake" id="birthday-cake"></div>
-
-        <audio id="audioPlayer" src="music/mashup.mp3" loop></audio>
-
-        <div class="photo-overlay photo1"></div>
-        <div class="photo-overlay photo2"></div>
-        <div class="photo-overlay photo3"></div>
-        <video id="birthday-video" src="images/p4.mp4" autoplay loop muted playsinline></video>
-    
-    <script>
-        // --- SCRIPT 1: Audio Player ---
-        const audioPlayer = document.getElementById('audioPlayer');
+<body>
+    <div class="name-container">
+        <h1 class="decorative-text" id="hbd-target"></h1>
+        <h2 class="name-on-page1" id="name-on-page1-target"></h2> 
         
-        audioPlayer.play().then(() => {
-            console.log('Audio playing automatically.');
-        }).catch(error => {
-            console.log('Autoplay was prevented. Waiting for user click.', error);
-            document.body.addEventListener('click', () => {
-                audioPlayer.play();
-            }, { once: true });
-        });
+        <div class="photo-overlay photo5"></div>
+        <div class="photo-overlay photo6"></div>
 
-        // --- SCRIPT 2: Letter-by-Letter Text Animations ---
-        function splitTextIntoSpans(targetId, text) {
-            const target = document.getElementById(targetId);
-            if (!target) return;
-            target.textContent = '';
-            text.split('').forEach(letter => {
-                const span = document.createElement('span');
-                if (letter === ' ') {
-                    span.innerHTML = '&nbsp;';
-                } else {
-                    span.textContent = letter;
-                }
-                target.appendChild(span);
-            });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-        // Your existing code
+    </div>
+    <audio id="audioPlayer" src="music/mashup1.mp3" loop></audio>
+    <a href="page2.html" class="nav-button">Next Page &rarr;</a>
+    
+<script>
+    const audioPlayer = document.getElementById('audioPlayer');
+        
+        audioPlayer.play().then(() => {
+            console.log('Audio playing automatically.');
+        }).catch(error => {
+            console.log('Autoplay was prevented. Waiting for user click.', error);
+            document.body.addEventListener('click', () => {
+              audioPlayer.play();
+            }, { once: true });
+     });
+
+    function splitTextIntoSpans(targetId, text) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.textContent = '';
+        text.split('').forEach(letter => {
+            const span = document.createElement('span');
+            if (letter === ' ') {
+                span.innerHTML = '&nbsp;';
+            } else {
+                span.textContent = letter;
+            }
+            target.appendChild(span);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
         splitTextIntoSpans('hbd-target', 'Happy Birthday,');
-        splitTextIntoSpans('name-target', 'Lee Song Qing!');
-
-        // --- SCRIPT 3: FIREWORKS (NEW CODE) ---
-        // ... FIREWORKS SCRIPT WAS REMOVED ...
-        });
-    </script>
+        splitTextIntoSpans('name-on-page1-target', 'Lee Song Qing!'); 
+    });
+</script>
 
 </body>
 </html>
